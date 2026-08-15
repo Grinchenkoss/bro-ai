@@ -1,0 +1,19 @@
+[Unit]
+Description=FRIEND_CLAUDE Telegram bot (pult k Claude Code)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/friend-claude-bot
+EnvironmentFile=/opt/friend-claude-bot/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/friend-claude-bot/venv/bin/python /opt/friend-claude-bot/bot.py
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

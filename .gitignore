@@ -1,0 +1,20 @@
+# секреты — НИКОГДА в репозиторий
+keys_transport.txt
+*.env
+.env
+CLAUDE_CODE_OAUTH_TOKEN*
+# состояние бота (сессии, окно расхода)
+state.json
+projects.json
+meta.json
+# мусор
+.DS_Store
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.bak-*
+# локальный пиновый инструментарий (graphify + uv), ставится отдельно, не в репо
+vendor/
+schedules.json
+session_calib.json

@@ -1,0 +1,19 @@
+[Unit]
+Description=FRIEND_CLAUDE Web console
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+# KillMode=process: рестарт/стоп убивает только uvicorn, запущенные агенты (claude -p) выживают
+# и не рвут ответ, если консоль правит саму себя. Сессии агентов сохраняются.
+KillMode=process
+User=root
+WorkingDirectory=/opt/friend-claude/web
+EnvironmentFile=/opt/friend-claude/bot/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=BOT_DIR=/opt/friend-claude/bot
+ExecStart=/opt/friend-claude/bot/venv/bin/uvicorn server:app --host 127.0.0.1 --port 8787
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=multi-user.target

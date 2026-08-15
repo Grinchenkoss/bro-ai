@@ -1,0 +1,17 @@
+{
+  "name": "FRIEND_CLAUDE — консоль",
+  "short_name": "FRIEND_CLAUDE",
+  "description": "Пульт к Claude: агенты по проектам, мультимодель, дизайн",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#141110",
+  "theme_color": "#141110",
+  "icons": [
+    {"src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    {"src": "/static/icons/logo.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}

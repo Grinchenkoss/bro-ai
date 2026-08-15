@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{BRAND}} · мастерская проектов</title>
+<style>
+  :root{
+    --bg:#0a0c11; --bg2:#0f131b; --ink:#eaecf3; --muted:#8b92a6; --faint:#565d70;
+    --line:rgba(255,255,255,.08);
+    --a1:#5eead4; --a2:#818cf8; --a3:#c084fc;
+    --card:rgba(255,255,255,.03);
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7fb; --bg2:#eef1f7; --ink:#171a22; --muted:#5b6376; --faint:#9aa1b4;
+           --line:rgba(10,14,25,.09); --card:rgba(10,14,25,.02); }
+  }
+  :root[data-theme="dark"]{ --bg:#0a0c11; --bg2:#0f131b; --ink:#eaecf3; --muted:#8b92a6; --faint:#565d70;
+           --line:rgba(255,255,255,.08); --card:rgba(255,255,255,.03); }
+  :root[data-theme="light"]{ --bg:#f6f7fb; --bg2:#eef1f7; --ink:#171a22; --muted:#5b6376; --faint:#9aa1b4;
+           --line:rgba(10,14,25,.09); --card:rgba(10,14,25,.02); }
+
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100dvh; padding:6vw; overflow:hidden; position:relative;
+  }
+  /* дрейфующие "облака" — мягкие градиентные пятна */
+  .orb{ position:fixed; border-radius:50%; filter:blur(60px); opacity:.5; pointer-events:none; z-index:0; }
+  .orb.a{ width:46vmax; height:46vmax; left:-14vmax; top:-16vmax;
+          background:radial-gradient(circle at 30% 30%, var(--a1), transparent 62%); animation:drift1 26s ease-in-out infinite; }
+  .orb.b{ width:40vmax; height:40vmax; right:-12vmax; bottom:-14vmax;
+          background:radial-gradient(circle at 60% 40%, var(--a2), transparent 60%); animation:drift2 32s ease-in-out infinite; }
+  .orb.c{ width:26vmax; height:26vmax; right:18vw; top:-8vmax;
+          background:radial-gradient(circle at 50% 50%, var(--a3), transparent 64%); opacity:.32; animation:drift1 40s ease-in-out infinite reverse; }
+  @keyframes drift1{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(6vmax,4vmax) scale(1.08);} }
+  @keyframes drift2{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-5vmax,-3vmax) scale(1.1);} }
+
+  .wrap{ position:relative; z-index:1; text-align:center; max-width:640px; }
+
+  .mark{ display:inline-flex; align-items:center; justify-content:center; margin-bottom:26px; }
+  .mark svg{ width:76px; height:76px; display:block; }
+
+  .eyebrow{ font-size:12.5px; letter-spacing:.42em; text-transform:uppercase; color:var(--muted);
+            margin:0 0 18px; padding-left:.42em; }
+
+  h1{ margin:0; font-weight:200; letter-spacing:-.03em; line-height:1;
+      font-size:clamp(46px, 11vw, 92px); }
+  h1 b{ font-weight:600;
+        background:linear-gradient(100deg, var(--a1), var(--a2) 55%, var(--a3));
+        -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+  .lead{ margin:22px auto 0; max-width:44ch; color:var(--muted);
+         font-size:clamp(15px,2.4vw,18px); line-height:1.6; text-wrap:balance; }
+
+  .card{ margin-top:34px; display:inline-flex; align-items:center; gap:12px;
+         padding:13px 20px; border:1px solid var(--line); border-radius:999px; background:var(--card);
+         color:var(--muted); font-size:14px; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--a1);
+        box-shadow:0 0 0 0 var(--a1); animation:pulse 2.4s ease-out infinite; }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(94,234,212,.5);} 70%,100%{ box-shadow:0 0 0 12px rgba(94,234,212,0);} }
+  .card code{ color:var(--ink); font-family:ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+              font-size:13px; letter-spacing:.01em; }
+
+  footer{ position:fixed; bottom:22px; left:0; right:0; z-index:1; text-align:center;
+          color:var(--faint); font-size:12.5px; letter-spacing:.04em; }
+
+  @media (prefers-reduced-motion: reduce){ .orb,.dot{ animation:none !important; } }
+</style>
+</head>
+<body>
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+
+  <main class="wrap">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none">
+        <defs>
+          <linearGradient id="g" x1="8" y1="14" x2="56" y2="50" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#5eead4"/><stop offset=".55" stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 46h24a11 11 0 0 0 1.4-21.9A15 15 0 0 0 17 22.6 10 10 0 0 0 20 46Z"
+              stroke="url(#g)" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M26 33.5c1.4 2.6 3.7 4 6 4s4.6-1.4 6-4" stroke="url(#g)" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </span>
+
+    <p class="eyebrow">{{BRAND}}</p>
+    <h1>мастерская<br><b>проектов</b></h1>
+    <p class="lead">Здесь живут превью и демонстрации проектов — каждый по своей прямой ссылке.
+       Общей витрины нет: ссылку на нужный проект вы получаете лично.</p>
+
+    <div class="card">
+      <span class="dot"></span>
+      <span>рабочие превью:&nbsp; <code>{{PROJECTS_DOMAIN}}/<i>проект</i></code></span>
+    </div>
+  </main>
+
+  <footer>© 2026 {{BRAND}} — превью-хостинг проектов</footer>
+</body>
+</html>

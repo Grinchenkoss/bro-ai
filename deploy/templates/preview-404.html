@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>404 · страница улетела в облако</title>
+<style>
+  :root{
+    --bg:#0a0c11; --ink:#eaecf3; --muted:#8b92a6; --faint:#565d70;
+    --line:rgba(255,255,255,.08);
+    --a1:#5eead4; --a2:#818cf8; --a3:#c084fc; --card:rgba(255,255,255,.03);
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f7fb; --ink:#171a22; --muted:#5b6376; --faint:#9aa1b4;
+           --line:rgba(10,14,25,.09); --card:rgba(10,14,25,.02); }
+  }
+  :root[data-theme="dark"]{ --bg:#0a0c11; --ink:#eaecf3; --muted:#8b92a6; --faint:#565d70;
+           --line:rgba(255,255,255,.08); --card:rgba(255,255,255,.03); }
+  :root[data-theme="light"]{ --bg:#f6f7fb; --ink:#171a22; --muted:#5b6376; --faint:#9aa1b4;
+           --line:rgba(10,14,25,.09); --card:rgba(10,14,25,.02); }
+
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100dvh; padding:6vw; overflow:hidden; position:relative; text-align:center;
+  }
+  .orb{ position:fixed; border-radius:50%; filter:blur(64px); opacity:.42; pointer-events:none; z-index:0; }
+  .orb.a{ width:44vmax; height:44vmax; left:-16vmax; top:-18vmax;
+          background:radial-gradient(circle at 30% 30%, var(--a2), transparent 62%); animation:drift 30s ease-in-out infinite; }
+  .orb.b{ width:38vmax; height:38vmax; right:-14vmax; bottom:-16vmax;
+          background:radial-gradient(circle at 60% 40%, var(--a3), transparent 60%); animation:drift 36s ease-in-out infinite reverse; }
+  @keyframes drift{ 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(5vmax,4vmax) scale(1.08);} }
+
+  .wrap{ position:relative; z-index:1; max-width:560px; }
+
+  .code{ font-weight:200; letter-spacing:-.04em; line-height:.9;
+         font-size:clamp(96px, 26vw, 220px);
+         background:linear-gradient(110deg, var(--a1), var(--a2) 52%, var(--a3));
+         -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+         position:relative; }
+
+  .cloud{ display:block; margin:0 auto 6px; width:88px; height:88px; animation:float 6s ease-in-out infinite; }
+  @keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-10px);} }
+
+  h1{ margin:14px 0 0; font-weight:400; font-size:clamp(20px,4.4vw,28px); letter-spacing:-.01em; }
+  p{ margin:14px auto 0; max-width:40ch; color:var(--muted); font-size:clamp(15px,2.4vw,17px);
+     line-height:1.6; text-wrap:balance; }
+
+  .btn{ display:inline-flex; align-items:center; gap:9px; margin-top:32px;
+        padding:13px 24px; border-radius:999px; text-decoration:none; font-size:15px; font-weight:500;
+        color:#0a0c11; background:linear-gradient(100deg, var(--a1), var(--a2));
+        transition:transform .18s ease, box-shadow .18s ease;
+        box-shadow:0 8px 30px -8px rgba(129,140,248,.6); }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 14px 40px -8px rgba(129,140,248,.7); }
+  .btn:focus-visible{ outline:2px solid var(--a1); outline-offset:3px; }
+
+  footer{ position:fixed; bottom:22px; left:0; right:0; z-index:1; text-align:center;
+          color:var(--faint); font-size:12.5px; letter-spacing:.04em; }
+
+  @media (prefers-reduced-motion: reduce){ .orb,.cloud{ animation:none !important; } }
+</style>
+</head>
+<body>
+  <div class="orb a"></div><div class="orb b"></div>
+
+  <main class="wrap">
+    <svg class="cloud" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="g" x1="8" y1="14" x2="56" y2="50" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5eead4"/><stop offset=".55" stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 46h24a11 11 0 0 0 1.4-21.9A15 15 0 0 0 17 22.6 10 10 0 0 0 20 46Z"
+            stroke="url(#g)" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="26" cy="33" r="1.6" fill="url(#g)"/><circle cx="38" cy="33" r="1.6" fill="url(#g)"/>
+      <path d="M27 39c1.2 1.4 2.9 2.2 5 2.2s3.8-.8 5-2.2" stroke="url(#g)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <div class="code">404</div>
+    <h1>Страница улетела в облако</h1>
+    <p>Такой ссылки здесь нет — возможно, превью переехало, версия обновилась или проект скрыт.</p>
+
+    <a class="btn" href="/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 5l-7 7 7 7" stroke="#0a0c11" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      на главную
+    </a>
+  </main>
+
+  <footer>{{BRAND}} — превью-хостинг проектов</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[Unit]
+Description=Anzhela memory backup (owner.md/board/known -> local + Mac via Syncthing)
+[Service]
+Type=oneshot
+ExecStart=/opt/friend-claude/bot/venv/bin/python /opt/friend-claude/web/scripts/anzhela_backup.py

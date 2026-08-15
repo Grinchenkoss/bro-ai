@@ -1,0 +1,12 @@
+[Unit]
+Description=FRIEND_CLAUDE network monitor (ping + API, logs blips)
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+ExecStart=/opt/friend-claude/bot/venv/bin/python /opt/friend-claude/web/scripts/netmon.py
+Restart=always
+RestartSec=5
+Nice=10
+[Install]
+WantedBy=multi-user.target

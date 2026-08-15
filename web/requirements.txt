@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+python-multipart
+telethon
+faster-whisper
+piper-tts
+torch
+omegaconf
+soundfile

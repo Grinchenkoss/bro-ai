@@ -1,0 +1,17 @@
+[Unit]
+Description=Anzhela Telegram listener (personal assistant inbound)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/friend-claude/web/scripts
+EnvironmentFile=/opt/friend-claude/bot/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/friend-claude/bot/venv/bin/python /opt/friend-claude/web/scripts/anzhela_listener.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
