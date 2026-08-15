@@ -1,5 +1,0 @@
-[Unit]
-Description=Collect netmon incident logs from all platform servers
-[Service]
-Type=oneshot
-ExecStart=/opt/friend-claude/web/scripts/netmon_collect.sh
